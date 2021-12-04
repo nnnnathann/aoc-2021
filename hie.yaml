@@ -1,0 +1,10 @@
+cradle:
+  cabal:
+    - path: "./lib"
+      component: "aoc2021:lib:aoc2021"
+    - path: "./days/Day01.hs"
+      component: "aoc2021:Day01"
+    - path: "./days/Day02.hs"
+      component: "aoc2021:Day02"
+    - path: "./days/Day03.hs"
+      component: "aoc2021:Day03"
