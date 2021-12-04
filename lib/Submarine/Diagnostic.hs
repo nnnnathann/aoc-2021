@@ -7,6 +7,10 @@ module Submarine.Diagnostic (
   lifeSupport,
 ) where
 
+{-
+  Run some diagnostics on the sub!
+-}
+
 import Data.Foldable (Foldable (foldr'))
 import Data.List
 import Data.Maybe (catMaybes, fromMaybe)
