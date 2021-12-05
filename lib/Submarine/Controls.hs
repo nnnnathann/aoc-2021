@@ -12,7 +12,7 @@ module Submarine.Controls (
 import qualified Data.Text as Text
 import Text.Megaparsec (choice, parseTest)
 import Text.Megaparsec.Char (space, string)
-import Text.Megaparsec.Extras (Parser, intP, linesOf, spaces)
+import Text.Megaparsec.Extras (Parser, intP, linesOf, whitespace)
 
 data NavCmd
   = Up Int
@@ -39,7 +39,7 @@ parsePlan =
 
 -- Generic nav command ("[direction] int")
 navCmd :: Text.Text -> Parser Int
-navCmd name = string name *> spaces *> intP
+navCmd name = string name *> whitespace *> intP
 
 -- Returns the end result position (horizontal * depth)
 -- of a plan, using the simple movement strategy (no aim)

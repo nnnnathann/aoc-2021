@@ -28,7 +28,7 @@ instance Read Bit where
   readsPrec _ ('1' : xs) = [(On, xs)]
   readsPrec _ _ = []
 
--- | Printing out a big should be 0 and 1.
+-- | Printing out a bit should be 0 and 1.
 instance Show Bit where
   show Off = "0"
   show On = "1"
