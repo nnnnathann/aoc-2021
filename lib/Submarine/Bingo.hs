@@ -73,12 +73,6 @@ lastWinner game =
     (Nothing, _) -> Nothing
     (Just pos, board) -> Just (pos, board)
 
-testScoring :: IO ()
-testScoring = do
-  let winners = firstWinner <$> exampleInput
-  let a = take 12 . fst <$> exampleInput
-  print a
-
 winningPositions :: Game -> [(Maybe Int, [[Int]])]
 winningPositions (numbers, boards) =
   map (winningIndex numbers) boards
