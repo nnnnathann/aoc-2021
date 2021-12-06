@@ -16,7 +16,7 @@ import Data.List
 import Data.Maybe (catMaybes, fromMaybe)
 import Text.Megaparsec (choice, many, oneOf, parse)
 import Text.Megaparsec.Char (char)
-import Text.Megaparsec.Extras (Parser, linesOf)
+import Text.Megaparsec.Extras (ParseResult, Parser, linesOf)
 import Text.RawString.QQ
 
 -- | A Bit is a single bit!
@@ -119,20 +119,3 @@ mostCommon = highest . counts
   highest xs
     | length ((group . sort) (map fst xs)) == 1 = Nothing
     | otherwise = Just ((snd . last . sortOn fst) xs)
-
-testInput =
-  parse
-    parseReport
-    "Test Input"
-    [r|00100
-11110
-10110
-10111
-10101
-01111
-00111
-11100
-10000
-11001
-00010
-01010|]

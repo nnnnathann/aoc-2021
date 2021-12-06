@@ -10,3 +10,7 @@ cradle:
       component: "aoc2021:Day03"
     - path: "./days/Day04.hs"
       component: "aoc2021:Day04"
+    - path: "./days/Day05.hs"
+      component: "aoc2021:Day05"
+    - path: "./test"
+      component: "aoc2021:spec"
