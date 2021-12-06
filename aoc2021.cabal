@@ -20,15 +20,17 @@ library
         Submarine.Controls
         Submarine.Diagnostic
         Submarine.Hydrothermal
+        Submarine.Lanternfish
         Submarine.Sonar
         Text.Megaparsec.Extras
     build-depends:
-        base             ^>= 4.14,
         array            ^>= 0.5.4,
+        base             ^>= 4.14,
         containers       ^>= 0.6,
-        text             ^>= 1.2.4,
+        flow             ^>= 1.0,
         megaparsec       ^>= 9.2.0,
-        raw-strings-qq   ^>= 1.1
+        raw-strings-qq   ^>= 1.1,
+        text             ^>= 1.2.4
     default-extensions:
         OverloadedStrings
 
@@ -70,7 +72,7 @@ test-suite spec
   main-is: Spec.hs
   hs-source-dirs:
       test
-  ghc-options: -Wall
+  ghc-options: -Wall -Wno-missing-home-modules
   default-extensions:
     OverloadedStrings
     , QuasiQuotes

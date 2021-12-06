@@ -81,11 +81,8 @@ winningIndex :: [Int] -> [[Int]] -> (Maybe Int, [[Int]])
 winningIndex numbers board =
   (findIndex hasWinner (numberSets numbers), board)
  where
-  winners :: Set.Set ISet.IntSet
-  winners = winningSets board
-
   hasWinner :: ISet.IntSet -> Bool
-  hasWinner numbers = any (`ISet.isSubsetOf` numbers) winners
+  hasWinner numbers = any (`ISet.isSubsetOf` numbers) (winningSets board)
 
 numberSets :: [Int] -> [ISet.IntSet]
 numberSets numbers = map (\i -> ISet.fromList (take i numbers)) [1 .. (length numbers)]
