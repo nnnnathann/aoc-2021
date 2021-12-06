@@ -1,5 +1,3 @@
-{-# LANGUAGE QuasiQuotes #-}
-
 module Submarine.Diagnostic (
   Bit,
   parseReport,

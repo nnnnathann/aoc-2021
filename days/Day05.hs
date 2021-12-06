@@ -1,7 +1,6 @@
 module Main where
 
 import AOC
-import Data.Text (Text)
 import Submarine.Hydrothermal as Hydrothermal
 
 main :: IO ()

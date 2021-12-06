@@ -1,4 +1,4 @@
-{-# LANGUAGE QuasiQuotes #-}
+{-# LANGUAGE TupleSections #-}
 
 module Submarine.Hydrothermal (
   Line,
@@ -52,7 +52,7 @@ pointGrid :: [Line] -> Map.Map (Int, Int) Int
 pointGrid = foldl' grid Map.empty
  where
   grid :: Map.Map (Int, Int) Int -> Line -> Map.Map (Int, Int) Int
-  grid m line = Map.unionWith (+) m $ Map.fromList (map (\a -> (a, 1)) (points line))
+  grid m line = Map.unionWith (+) m $ Map.fromList (map (,1) (points line))
 
 points :: Line -> [(Int, Int)]
 points line@((x1, y1), (x2, y2))
