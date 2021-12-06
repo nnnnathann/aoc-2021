@@ -6,7 +6,7 @@ import Test.Hspec
 spec :: Spec
 spec = do
   describe "lanternfish" $ do
-    it "should work" $ do
+    it "should count after n days" $ do
       countAfterDaysN 80 exampleInput `shouldBe` 5934
       countAfterDaysN 256 exampleInput `shouldBe` 26984457539
 
