@@ -8,7 +8,8 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-        commonInputs = (with pkgs; [ ghc cabal-install ]);
+        commonInputs =
+          (with pkgs; [ ghc cabal-install ghcid haskellPackages.fourmolu ]);
         darwinExtras = pkgs.lib.optionals pkgs.stdenv.isDarwin
           (with pkgs.darwin.apple_sdk.frameworks; [ ]);
         linuxExtras = pkgs.lib.optionals pkgs.stdenv.isLinux (with pkgs; [ ]);

@@ -22,6 +22,7 @@ library
         Submarine.Hydrothermal
         Submarine.Lanternfish
         Submarine.Sonar
+        Submarine.WhaleDefense
         Text.Megaparsec.Extras
     build-depends:
         array            ^>= 0.5.4,
@@ -36,7 +37,7 @@ library
 
 common day
   hs-source-dirs:      days
-  build-depends:       aoc2021, base, text, megaparsec, raw-strings-qq
+  build-depends:       aoc2021, base, text, megaparsec, raw-strings-qq, flow
   default-language:    Haskell2010
   default-extensions:
     OverloadedStrings
@@ -65,6 +66,10 @@ executable Day05
 executable Day06
   import:              day
   main-is:             Day06.hs
+
+executable Day07
+  import:              day
+  main-is:             Day07.hs
 
 
 test-suite spec

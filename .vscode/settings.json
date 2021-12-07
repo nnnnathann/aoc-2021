@@ -1,0 +1,7 @@
+{
+  "nixEnvSelector.nixFile": "${workspaceRoot}/flake.nix",
+  "[haskell]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "haskell.haskell"
+  }
+}
