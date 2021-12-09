@@ -76,11 +76,15 @@ decodeEntry entry =
     |> map (decodeEntryWith entry)
     |> firstJust
  where
+  -- if all the signals are valid digits (after translation),
+  -- decode the outputs. otherwise return Nothing
   decodeEntryWith :: ([String], [String]) -> Map Char Char -> Maybe [Int]
   decodeEntryWith (signals, outputs) key =
     traverse (rewireWith key) signals *> traverse (rewireWith key) outputs
+  -- rewire a wire rep to its "decoded" integer
   rewireWith :: Map Char Char -> String -> Maybe Int
   rewireWith key c = Map.lookup (translateWith key c) wireDisplay
+  -- translate a wire rep to its "decoded" state
   translateWith :: Map Char Char -> String -> String
   translateWith key c = sort (map (key Map.!) c)
 
