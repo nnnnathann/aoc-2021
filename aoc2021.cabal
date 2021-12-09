@@ -22,6 +22,7 @@ library
         Submarine.Diagnostic
         Submarine.Hydrothermal
         Submarine.Lanternfish
+        Submarine.LavaTubes
         Submarine.Sonar
         Submarine.WhaleDefense
         Text.Megaparsec.Extras
@@ -75,6 +76,10 @@ executable Day07
 executable Day08
   import:              day
   main-is:             Day08.hs
+
+executable Day09
+  import:              day
+  main-is:             Day09.hs
 
 
 test-suite spec
