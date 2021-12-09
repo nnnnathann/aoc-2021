@@ -2,6 +2,7 @@
 
 module Submarine.LavaTubesSpec where
 
+import Data.List (sort)
 import Submarine.LavaTubes
 import Test.Hspec
 import Text.Megaparsec (parse)
@@ -15,6 +16,10 @@ spec = do
       sumRiskLowPoints <$> testInput `shouldBe` Right 15
     it "should find low points" $ do
       lowPoints testLowPoints `shouldBe` [1]
+    it "should find segments" $ do
+      sort . map length . basins <$> testInput `shouldBe` Right [3, 9, 9, 14]
+    it "should find segment sums" $ do
+      take 3 . reverse . sort . map length . basins <$> testInput `shouldBe` Right [14, 9, 9]
 
 testLowPoints :: [[Int]]
 testLowPoints =
