@@ -2,13 +2,11 @@
 
 module Submarine.LavaTubes where
 
-import Control.Monad (filterM, join)
 import Data.Char (digitToInt)
-import Data.List (sort, transpose)
+import Data.List (sort)
 import Data.Map (Map)
 import qualified Data.Map as Map
-import Data.Maybe (catMaybes, fromMaybe, isJust, mapMaybe)
-import Data.Windows
+import Data.Maybe (fromMaybe, mapMaybe)
 import Flow ((|>))
 import Text.Megaparsec (many)
 import Text.Megaparsec.Char (digitChar)
@@ -60,8 +58,6 @@ segmentBy f values coord
       |> map (segmentBy f values)
       |> Map.unions
       |> Map.union prev
-   where
-    curr = values Map.! coord'
 
 filterNeighbors :: ((a, a) -> Bool) -> Map Coord2 a -> Coord2 -> [Coord2]
 filterNeighbors f values c =
@@ -109,13 +105,6 @@ coords inp =
     | (y, xs) <- zip [0 ..] inp
     , (x, xv) <- zip [0 ..] xs
     ]
-
-inp :: [[Int]]
-inp =
-  [ [1, 2, 3]
-  , [4, 1, 6]
-  , [7, 8, 9]
-  ]
 
 riskLevel :: Int -> Int
 riskLevel =
