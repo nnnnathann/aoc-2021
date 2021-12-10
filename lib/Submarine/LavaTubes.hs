@@ -14,17 +14,26 @@ import Text.Megaparsec (many)
 import Text.Megaparsec.Char (digitChar)
 import Text.Megaparsec.Extras (Parser, linesOf)
 
+-- parse the int grid
 parseHeightMap :: Parser [[Int]]
 parseHeightMap =
   linesOf (many (digitToInt <$> digitChar))
 
+-- part 1 : find the sum of the riskLevel of the lowest points
 sumRiskLowPoints :: [[Int]] -> Int
 sumRiskLowPoints =
   sum . map riskLevel . lowPoints
 
+-- part 2 : starting from the lowest points, find segments
+-- excluding 9s
 productTop3Basins :: [[Int]] -> Int
-productTop3Basins =
-  product . take 3 . reverse . sort . map length . basins
+productTop3Basins input =
+  basins input
+    |> map length
+    |> sort
+    |> reverse
+    |> take 3
+    |> product
 
 lowPoints :: [[Int]] -> [Int]
 lowPoints inp =
@@ -70,6 +79,8 @@ lowCoords inp =
   values = coords inp
   isLowPoint (x, ns) =
     (values Map.! x) < minimum (mapMaybe (`Map.lookup` values) ns)
+
+-- Grid operations
 
 type Coord2 = (Int, Int)
 
