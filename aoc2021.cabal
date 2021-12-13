@@ -15,6 +15,7 @@ library
     default-language: Haskell2010
     exposed-modules:
         AOC
+        Data.Grid
         Data.Windows
         Submarine.Bingo
         Submarine.Controls
@@ -23,7 +24,9 @@ library
         Submarine.Hydrothermal
         Submarine.Lanternfish
         Submarine.LavaTubes
+        Submarine.Octopus
         Submarine.Sonar
+        Submarine.SyntaxScoring
         Submarine.WhaleDefense
         Text.Megaparsec.Extras
     build-depends:
@@ -81,6 +84,14 @@ executable Day09
   import:              day
   main-is:             Day09.hs
 
+executable Day10
+  import:              day
+  main-is:             Day10.hs
+
+executable Day11
+  import:              day
+  main-is:             Day11.hs
+
 
 test-suite spec
   type: exitcode-stdio-1.0
@@ -99,5 +110,6 @@ test-suite spec
     , megaparsec
     , text
     , containers
+    , flow
   default-language: Haskell2010
   build-tool-depends: hspec-discover:hspec-discover == 2.*

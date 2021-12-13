@@ -13,7 +13,7 @@ import Data.List (findIndex, minimumBy, sortBy, transpose)
 import qualified Data.Set as Set
 import Text.Megaparsec (MonadParsec (eof, notFollowedBy, try), count, many, manyTill, parse, parseTest, sepBy, sepEndBy, sepEndBy1, (<|>))
 import Text.Megaparsec.Char (char, newline)
-import Text.Megaparsec.Extras (Parser, digit, intP, spaces)
+import Text.Megaparsec.Extras (Parser, blankLine, digit, intP, spaces)
 import Text.RawString.QQ
 
 -- Parsing
@@ -26,9 +26,6 @@ parseGame = do
   _ <- blankLine
   boards <- sepBy boardP blankLine
   return (numbers, boards)
-
-blankLine :: Parser ()
-blankLine = void $ count 2 newline
 
 boardP :: Parser [[Int]]
 boardP =

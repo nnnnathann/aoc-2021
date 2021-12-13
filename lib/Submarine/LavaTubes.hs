@@ -1,8 +1,13 @@
-{-# LANGUAGE TupleSections #-}
-
-module Submarine.LavaTubes where
+module Submarine.LavaTubes (
+  parseHeightMap,
+  sumRiskLowPoints,
+  productTop3Basins,
+  lowPoints,
+  basins,
+) where
 
 import Data.Char (digitToInt)
+import Data.Grid
 import Data.List (sort)
 import Data.Map (Map)
 import qualified Data.Map as Map
@@ -59,13 +64,6 @@ segmentBy f values coord
       |> Map.unions
       |> Map.union prev
 
-filterNeighbors :: ((a, a) -> Bool) -> Map Coord2 a -> Coord2 -> [Coord2]
-filterNeighbors f values c =
-  surrounding c
-    |> mapMaybe (\c -> fmap (c,) (Map.lookup c values))
-    |> filter (\(_, v) -> f (values Map.! c, v))
-    |> map fst
-
 lowCoords :: (Ord a) => [[a]] -> [Coord2]
 lowCoords inp =
   neighboring inp
@@ -75,36 +73,6 @@ lowCoords inp =
   values = coords inp
   isLowPoint (x, ns) =
     (values Map.! x) < minimum (mapMaybe (`Map.lookup` values) ns)
-
--- Grid operations
-
-type Coord2 = (Int, Int)
-
-neighbors :: a -> [[a]] -> [(a, [a])]
-neighbors def inp =
-  [ (v, neighbors)
-  | (currCoord, currNeighbors) <- neighboring inp
-  , let v = cs Map.! currCoord
-  , let neighbors = map (fromMaybe def . flip Map.lookup cs) currNeighbors
-  ]
- where
-  cs = coords inp
-
-neighboring :: [[a]] -> [(Coord2, [Coord2])]
-neighboring inp =
-  map (\c -> (c, surrounding c)) (Map.keys (coords inp))
-
-surrounding :: Coord2 -> [Coord2]
-surrounding (x, y) =
-  [(x, y -1), (x, y + 1), (x -1, y), (x + 1, y)]
-
-coords :: [[a]] -> Map Coord2 a
-coords inp =
-  Map.fromList
-    [ ((x, y), xv)
-    | (y, xs) <- zip [0 ..] inp
-    , (x, xv) <- zip [0 ..] xs
-    ]
 
 riskLevel :: Int -> Int
 riskLevel =
