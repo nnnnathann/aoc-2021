@@ -28,6 +28,7 @@ library
         Submarine.PassagePathing
         Submarine.Sonar
         Submarine.SyntaxScoring
+        Submarine.TransparentOragami
         Submarine.WhaleDefense
         Text.Megaparsec.Extras
     build-depends:

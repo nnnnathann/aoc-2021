@@ -20,12 +20,10 @@ spec :: Spec
 spec = do
   describe "passage pathing" $ do
     it "should solve part 1" $ do
-      traceShowM $ enumerate AtMostOnce sample2
       runTest (countPaths AtMostOnce) inputSample1 `shouldBe` 10
       runTest (countPaths AtMostOnce) inputSample2 `shouldBe` 19
       runTest (countPaths AtMostOnce) inputSample3 `shouldBe` 226
     it "should solve part 2" $ do
-      traceShowM $ enumerate SingleSmallCaveTwice sample1
       runTest (countPaths SingleSmallCaveTwice) inputSample1 `shouldBe` 36
       runTest (countPaths SingleSmallCaveTwice) inputSample2 `shouldBe` 103
       runTest (countPaths SingleSmallCaveTwice) inputSample3 `shouldBe` 3509
