@@ -25,6 +25,7 @@ library
         Submarine.Lanternfish
         Submarine.LavaTubes
         Submarine.Octopus
+        Submarine.PassagePathing
         Submarine.Sonar
         Submarine.SyntaxScoring
         Submarine.WhaleDefense
@@ -35,6 +36,7 @@ library
         containers       ^>= 0.6,
         flow             ^>= 1.0,
         megaparsec       ^>= 9.2.0,
+        parsec           ,
         raw-strings-qq   ^>= 1.1,
         text             ^>= 1.2.4
     default-extensions:
@@ -92,6 +94,10 @@ executable Day11
   import:              day
   main-is:             Day11.hs
 
+executable Day12
+  import:              day
+  main-is:             Day12.hs
+
 
 test-suite spec
   type: exitcode-stdio-1.0
@@ -108,6 +114,7 @@ test-suite spec
     , aoc2021
     , raw-strings-qq
     , megaparsec
+    , parsec
     , text
     , containers
     , flow
